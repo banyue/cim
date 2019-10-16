@@ -73,6 +73,7 @@ public class AccountServiceRedisImpl implements AccountService {
     public StatusEnum login(LoginReqVO loginReqVO) throws Exception {
         //再去Redis里查询
         String key = ACCOUNT_PREFIX + loginReqVO.getUserId();
+        System.out.println(key);
         String userName = redisTemplate.opsForValue().get(key);
         if (null == userName) {
             return StatusEnum.ACCOUNT_NOT_MATCH;
